@@ -59,7 +59,7 @@ export class SectionServiceClient {
   }
 
   enrollSection(sectionId) {
-    return fetch((SECTION_API_URL + '/section/enroll/' + sectionId), {
+    return fetch((SECTION_API_URL + '/student/enroll/section/' + sectionId), {
       credentials: 'include',
       method: 'PUT'
     }).then(function (response) {
@@ -68,7 +68,7 @@ export class SectionServiceClient {
   }
 
   unenrollSection(sectionId) {
-    return fetch((SECTION_API_URL + '/section/unenroll/' + sectionId), {
+    return fetch((SECTION_API_URL + '/student/unenroll/section' + sectionId), {
       credentials: 'include',
       method: 'delete'
     }).then(function (response) {
@@ -83,5 +83,14 @@ export class SectionServiceClient {
       return response.json();
     });
   }
+
+  findSectionById(sectionId) {
+    return fetch((SECTION_API_URL + '/section/' + sectionId),{
+      credentials: 'include'
+    }).then (function (response) {
+      return response.json();
+    });
+  }
+
 }
 
