@@ -10,6 +10,7 @@ import {routing} from './app.routing';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
+import {UserServiceClient} from '../services/user.service.client';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoginComponent } from './login/login.component';
     routing
   ],
   providers: [
+    UserServiceClient,
     CourseServiceClient
   ],
   bootstrap: [AppComponent]
