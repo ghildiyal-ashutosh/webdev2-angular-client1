@@ -8,11 +8,34 @@ export class UserServiceClient {
       {
         method : 'POST',
         body : JSON.stringify(user),
+        credentials : 'include',
         headers :
           {
-            'content-type' : 'application-json'
+            'content-type' : 'application/json'
           }
-      });
+      }).then(function (response) {
+
+        return response.json();
+
+    });
 
   }
+  currentUser = () =>
+    fetch('http://localhost:3000/currentUser',
+      {
+        credentials: 'include'
+      }).then (response => response.json())
+
+  logOut = () => {
+    return fetch((USER_API_URL + '/logout'),
+      {
+        method: 'POST',
+        credentials: 'include'
+      }).then (function (response) {
+      return response.json();
+    });
+  }
+
 }
+
+
