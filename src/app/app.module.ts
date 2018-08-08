@@ -11,6 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import {UserServiceClient} from '../services/user.service.client';
+import { SectionsComponent } from './sections/sections.component';
+import {SectionServiceClient} from '../services/section.service.client';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {UserServiceClient} from '../services/user.service.client';
     CourseNavigatorComponent,
     RegisterComponent,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
+    SectionsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import {UserServiceClient} from '../services/user.service.client';
   ],
   providers: [
     UserServiceClient,
-    CourseServiceClient
+    CourseServiceClient,
+    SectionServiceClient
   ],
   bootstrap: [AppComponent]
 })

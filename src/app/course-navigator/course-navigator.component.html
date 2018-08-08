@@ -1,11 +1,16 @@
 <div class ="container-fluid">
   <h2> Course-Navigator</h2>
 
+
   <div class="row">
 
     <div class="col-4">
-      <h2> Courses</h2>
+
       <ul class="list-group">
+        <li class="list-group-item active">
+          Courses
+        </li>
+        <br/>
         <li
           [ngClass]= "{'active': course.id === selectedCourse.id}"
           (click)="selectCourse(course)"
@@ -16,8 +21,12 @@
     </div>
 
     <div class = "col-4">
-      <h2> Modules</h2>
-      <ul>
+
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Modules
+        </li>
+        <br/>
         <li
           [ngClass]= "{'active': module.id === selectedModule.id}"
           (click)="selectModule(module)"
@@ -28,8 +37,12 @@
     </div>
 
     <div class = "col-4">
-      <h2> Lessons</h2>
-      <ul>
+
+      <ul class ="list-group">
+        <li class="list-group-item active">
+          Lessons
+        </li>
+        <br/>
         <li
           [ngClass]= "{'active': lesson.id === selectedLesson.id}"
           (click)="selectLesson(lesson)"

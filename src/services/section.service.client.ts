@@ -1,0 +1,28 @@
+const SECTION_API_URL = 'http://localhost:3000/api/section'
+
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class SectionServiceClient {
+  createSection(section) {
+    fetch (SECTION_API_URL, {
+      method: 'POST',
+      body: JSON.stringify(section),
+      credentials: 'include',
+      headers:
+        {'Content-Type' : 'application/json'}
+    }).then(function (response) {
+      return response.json();
+
+    });
+  }
+
+
+  findSectionsForCourse(courseId) {
+    return fetch ((SECTION_API_URL + '/' + courseId),{
+      credentials: 'include'
+    }).then(function (response) {
+        return response;
+      });
+  }
+}

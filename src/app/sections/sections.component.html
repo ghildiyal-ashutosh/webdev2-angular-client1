@@ -1,0 +1,61 @@
+<div class = "container-fluid">
+
+  <h2>Course - Sections</h2>
+  <br/>
+  <div class="row">
+
+    <div class="col-4">
+
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Courses
+        </li>
+        <br/>
+        <li
+          [ngClass]= "{'active': course.id === selectedCourse.id}"
+          (click)="selectCourse(course)"
+          *ngFor = "let course of courses" class="list-group-item">
+          {{course.title}}
+        </li>
+      </ul>
+    </div>
+
+    <div class = "col-4">
+
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Sections
+        </li>
+        <br/>
+        <li>
+            <input [(ngModel)] = "section.title"
+              placeholder="Add New Section" class ="form-control" />
+            <button (click)="addSection(section)"
+              class="btn btn-success form-control"> Create</button>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<!--  <li
+          [ngClass]= "{'active': section.id === selectedSection.id}"
+          (click)="selectSection(module)"
+          *ngFor = "let section of selectedCourse.section" class="list-group-item">
+          {{section.title}}
+        </li>
+
+
+         <li
+          [ngClass]= "{'active': section.id === selectedSection.id}"
+             (click) = "selectSection(section)"
+              *ngFor = "let section for sections" class = "list-group-item">
+        {{section.title}}
+        </li>
+        -->
+
+
