@@ -1,11 +1,11 @@
-const SECTION_API_URL = 'http://localhost:3000/api/section'
+const SECTION_API_URL = 'http://localhost:3000/api'
 
 import {Injectable} from '@angular/core';
 
 @Injectable()
 export class SectionServiceClient {
   createSection(section) {
-    fetch (SECTION_API_URL, {
+   return fetch ((SECTION_API_URL + '/section'), {
       method: 'POST',
       body: JSON.stringify(section),
       credentials: 'include',
@@ -19,10 +19,10 @@ export class SectionServiceClient {
 
 
   findSectionsForCourse(courseId) {
-    return fetch ((SECTION_API_URL + '/' + courseId),{
+    return fetch ((SECTION_API_URL + '/course/' + courseId + '/section'), {
       credentials: 'include'
     }).then(function (response) {
-        return response;
+        return response.json();
       });
   }
 }

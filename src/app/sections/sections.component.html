@@ -34,6 +34,12 @@
               class="btn btn-success form-control"> Create</button>
         </li>
 
+        <li
+          (click)="selectSection(section)"
+          *ngFor = "let section of sections" class="list-group-item">
+          {{section.title}}
+        </li>
+
 
       </ul>
     </div>
@@ -42,12 +48,7 @@
 
 
 
-<!--  <li
-          [ngClass]= "{'active': section.id === selectedSection.id}"
-          (click)="selectSection(module)"
-          *ngFor = "let section of selectedCourse.section" class="list-group-item">
-          {{section.title}}
-        </li>
+<!--
 
 
          <li

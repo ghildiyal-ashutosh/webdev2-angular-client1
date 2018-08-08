@@ -27,19 +27,19 @@ export class SectionsComponent implements OnInit {
       .then(sections => this.sections = sections);
 
   }
-
-
-  addSection(section)
-  {
+  addSection(section) {
     section.courseId = this.selectedCourse.id;
 
     this.sectionService
-      .createSection(section);
-
-  }
+      .createSection(section)
+      .then(() => {
+        return this.sectionService
+          .findSectionsForCourse((this.selectedCourse.id))
+      })
+      .then(sections => this.sections = sections)}
 
   selectSection(section) {
-    console.log(section);
+    this.selectedSection = section;
 
   }
   ngOnInit() {
