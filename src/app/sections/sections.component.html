@@ -1,62 +1,70 @@
 <div class = "container-fluid">
 
-  <h2>Course - Sections</h2>
+  <h2>Sections For Course : {{courseId}}</h2>
   <br/>
-  <div class="row">
 
-    <div class="col-4">
+  <ul class="list-group-item">
+    <li>
+      <label for = "sname" > Section Name</label>
 
-      <ul class="list-group">
-        <li class="list-group-item active">
-          Courses
-        </li>
-        <br/>
-        <li
-          [ngClass]= "{'active': course.id === selectedCourse.id}"
-          (click)="selectCourse(course)"
-          *ngFor = "let course of courses" class="list-group-item">
-          {{course.title}}
-        </li>
-      </ul>
-    </div>
+      <input
+        [(ngModel)] = "title"
+        placeholder="Enter Section"
+        class = "form-control"
+         id = "sname"/>
+      <br/>
 
-    <div class = "col-4">
+      <label for = "remSeats" > Available Seats</label>
 
-      <ul class="list-group">
-        <li class="list-group-item active">
-          Sections
-        </li>
-        <br/>
-        <li>
-            <input [(ngModel)] = "section.title"
-              placeholder="Add New Section" class ="form-control" />
-            <button (click)="addSection(section)"
-              class="btn btn-success form-control"> Create</button>
-        </li>
+      <input
+        [(ngModel)] = "remSeats"
+        placeholder="Enter Available Seats"
+        class = "form-control"
+        id = "remSeats"/>
+      <br/>
 
-        <li
-          (click)="selectSection(section)"
-          *ngFor = "let section of sections" class="list-group-item">
-          {{section.title}}
-        </li>
+      <label for = "maxSeats" > Maximum Seats</label>
 
+      <input
+        [(ngModel)] = "maxSeats"
+        placeholder="Enter Maximum Seats"
+        class = "form-control"
+        id = "maxSeats"/>
 
-      </ul>
-    </div>
-  </div>
+      <br/>
+
+      <button (click)="createSection(title, remSeats, maxSeats)"
+              class="btn btn-success form-control">
+        Add Section
+      </button>
+
+      <br>
+      <button (click)="updateSection()"
+              class="btn btn-primary form-control">
+        Save Section
+      </button>
+      <br/>
+    </li>
+
+    <li *ngFor ="let section of sections" class="list-group-item">
+      <div class="row">
+        <div class = "col-8">
+          Name : {{section.title}} &nbsp; Availability : {{section.remSeats}} &nbsp; Maximum Seats : {{section.maxSeats}}
+        </div>
+        <div class = "col-4">
+      <span class="float-right btn-group">
+      <button class="btn btn-primary"
+        (click)= "setSection(section.title, section.remSeats, section.maxSeats, section._id)">
+        Update Section
+      </button>
+        <button class="btn btn-danger"
+                (click) = "deleteSection(section._id)">
+          Delete Section
+        </button>
+      </span>
+        </div>
+        </div>
+    </li>
+
+  </ul>
 </div>
-
-
-
-<!--
-
-
-         <li
-          [ngClass]= "{'active': section.id === selectedSection.id}"
-             (click) = "selectSection(section)"
-              *ngFor = "let section for sections" class = "list-group-item">
-        {{section.title}}
-        </li>
-        -->
-
-
