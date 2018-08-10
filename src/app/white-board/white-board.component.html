@@ -3,9 +3,21 @@
 
   <span class="float-right">
     <div class="btn-group">
-      <button class="btn">
+
+        <button (click)="logout()"
+          [hidden]="viewStatus"
+          class="btn">
+     LogOut
+  </button>
+
+
+
+      <button [hidden]="!viewStatus"
+        class="btn">
     <a routerLink="/login"> LogIn </a>
   </button>
+
+
       <button class="btn">
     <a routerLink="/register"> Register </a>
   </button>
@@ -15,23 +27,41 @@
     </div>
   </span>
 
+  <span class="float-left">
+    <div class="btn-group">
+      <button class="btn" >
+        <a routerLink= "/courses"> Course-Navigator</a>
+      </button>
 
+       <button class="btn">
+        <a routerLink= "/enrollment"> Course-Enrollment</a>
+      </button>
+    </div>
+  </span>
 
-  <div *ngFor = "let course of courses">
-    <ul class ="list-group">
-      <div *ngFor = "let enrollment of sections">
-      <li class="list-group-item active">
-        Enrolled
-      </li>
-      <li *ngIf = "course.id === enrollment.section.courseId"
-            class="list-group-item">
-        <a routerLink ='/course/{{course.id}}'> {{course.title}}</a>
-      </li>
-      </div>
-    </ul>
-  </div>
   <br/>
   <br/>
+
+  <ul class="list-group">
+
+
+    <li
+      class = "list-group-item active">
+      Enrolled Course/Sections
+    </li>
+
+       <li *ngFor="let enrolled of sections"
+         class = "list-group-item">
+          {{enrolled.section.title}}
+        </li>
+  </ul>
+  <br/>
+  <br/>
+
+
+
+
+
 
   <router-outlet></router-outlet>
   <!-- equivalent to Router in react -->

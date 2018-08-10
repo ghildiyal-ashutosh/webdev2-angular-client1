@@ -13,35 +13,52 @@ import {Router} from '@angular/router';
 export class WhiteBoardComponent implements OnInit {
 
   user = {};
-  _id = -1;
+  id = -1;
   sections = [];
   courses = [];
+  viewStatus = true;
+
 
   constructor(private userService:    UserServiceClient,
               private sectionService: SectionServiceClient,
-              private courseService:  CourseServiceClient) { }
+              private courseService:  CourseServiceClient,
+             private router: Router ) { }
 
 
-              ngOnInit() {
+
+              logout()
+              {
+                this.viewStatus = true;
+                this.userService.logOut()
+                  .then(() => this.router.navigate([''])
+                  );
+              }
+
+ ngOnInit() {
     this.userService
       .currentUser()
       .then((user) => {
-        if (user.username !== 'Negative') {
-          this._id = user._id;
+        if (user !== null) {
+          this.id = user._id;
+          this.viewStatus = false;
         }
-      }).then(() => {
-      if (this._id !== -1) {
-        this.sectionService
-          .findSectionsForStudent()
-          .then(sections => this.sections = sections);
+        else{
+          this.id = -1 ;
+        }
+      }).then (() => {
+        if (this.id !== -1) {
 
-        this.courseService.findAllCourses()
+          this.sectionService
+          .findSectionsForStudent()
+            .then ((sections) =>
+              this.sections = sections);
+
+          this.courseService.findAllCourses()
           .then(courses => this.courses = courses);
 
 
       }
     });
     }
+    }
 
-
-}

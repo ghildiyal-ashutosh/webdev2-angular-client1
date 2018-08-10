@@ -11,8 +11,8 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  username : String;
-  password : String;
+  username: String;
+  password: String;
 
   constructor(private router: Router,
               private userService: UserServiceClient) { }
@@ -20,7 +20,14 @@ export class LoginComponent implements OnInit {
   logIn = (username, password) => {
     const user = {username: username, password: password};
     this.userService.logIn(user)
-      .then(user1 => this.router.navigate(['profile']));
+      .then(user1 => {
+        if (user1._id === 0) {
+          alert('Log In fail Try again');
+        }
+        else {
+          this.router.navigate(['profile']);
+        }
+      });
   }
 
   ngOnInit() {
