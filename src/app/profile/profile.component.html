@@ -13,6 +13,10 @@
     </div>
   </span>
 
+  <textarea readonly = "readonly" [hidden]="!adminStatus">
+    You have registered successfully LogIn to have full access of Profile Page
+  </textarea>
+
 
   <br/>
   <br/>
@@ -21,9 +25,7 @@
 
 
 <div [hidden]="adminStatus">
-  <textarea readonly = "readonly" [hidden]="!adminStatus">
-    You have registered successfully LogIn to have full access of Profile Page
-  </textarea>
+
   <h2> Welcome {{currentUser.username}} !!!</h2>
 
   <label for = "inputFld1"> Username </label>
