@@ -78,6 +78,7 @@ export class ProfileComponent implements OnInit {
         }
         }).then (() => {
       if (this._id !== -1)  {
+        this.adminStatus = false;
 
         this.sectionService
           .findSectionsForStudent()
@@ -87,7 +88,8 @@ export class ProfileComponent implements OnInit {
           .then(courses => this.courses = courses);
       }
     });
-    }}
+    }
+}
 
 
 

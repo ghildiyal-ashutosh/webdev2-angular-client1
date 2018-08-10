@@ -1,4 +1,4 @@
-<div class ="container-fluid" >
+<input class ="container-fluid" >
   <span class = "float-right">
     <div class ="btn-group">
       <button (click)= "logout()" class="btn">
@@ -17,8 +17,14 @@
   <br/>
   <br/>
 
+
+
+
 <div [hidden]="adminStatus">
-<h2> Welcome {{currentUser.username}} !!!</h2>
+  <textarea readonly = "readonly" [hidden]="!adminStatus">
+    You have registered successfully LogIn to have full access of Profile Page
+  </textarea>
+  <h2> Welcome {{currentUser.username}} !!!</h2>
 
   <label for = "inputFld1"> Username </label>
   <input [(ngModel)]="username"
@@ -52,7 +58,10 @@
          id = "inputFld5"
          type = "number"/>
 </div>
+
   <br/>
+
+  <div [hidden]="adminStatus">
 
   <button class = "form-control btn btn-primary" (click)="update()"> Update</button>
   <br/>
@@ -73,6 +82,8 @@
 
     </ul>
   </div>
+</div>
+
 
 
 
