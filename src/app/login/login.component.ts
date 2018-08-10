@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   username: String;
   password: String;
 
+
   constructor(private router: Router,
               private userService: UserServiceClient) { }
 
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
           alert('Log In fail Try again');
         }
         else {
-          this.router.navigate(['profile']);
+          this.router.navigate(['profile/']);
         }
       });
   }

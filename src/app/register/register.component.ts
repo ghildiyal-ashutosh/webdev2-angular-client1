@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   username = '';
   password = '';
   password2 = '';
+  adminstatus = false;
 
   constructor( private userService: UserServiceClient,
                 private router: Router) { }
@@ -23,6 +24,8 @@ export class RegisterComponent implements OnInit {
 
       this.userService.findUserByUsername(this.username).then((response) => {
         if (response._id === 0) {
+
+          alert('You have been registered successfully' + '    ' + 'LogIn for full access to your profile !!!');
           this.userService
             .createUser(this.username, this.password)
             .then(() => this.router.navigate(['profile']));
