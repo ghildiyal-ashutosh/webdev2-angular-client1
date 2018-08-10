@@ -68,7 +68,7 @@ export class SectionServiceClient {
   }
 
   unenrollSection(sectionId) {
-    return fetch((SECTION_API_URL + '/student/unenroll/section' + sectionId), {
+    return fetch((SECTION_API_URL + '/student/unenroll/section/' + sectionId), {
       credentials: 'include',
       method: 'delete'
     }).then(function (response) {
