@@ -1,4 +1,4 @@
-const USER_API_URL = 'http://localhost:3000';
+const USER_API_URL = 'http://localhost:3000/api';
 import {Injectable} from '@angular/core';
 
 @Injectable()
@@ -21,10 +21,12 @@ export class UserServiceClient {
 
   }
   currentUser = () =>
-    fetch('http://localhost:3000/currentUser',
+    fetch((USER_API_URL + '/profile'),
       {
         credentials: 'include'
-      }).then (response => response.json())
+      }).then(function (response) {
+        return response.json();
+        })
 
   logOut = () => {
     return fetch((USER_API_URL + '/logout'),
@@ -32,10 +34,53 @@ export class UserServiceClient {
         method: 'POST',
         credentials: 'include'
       }).then (function (response) {
-      return response.json();
+      return response;
     });
   }
 
+  createUser (username, password) {
+    const credentials = {username: username, password: password};
+
+    return fetch((USER_API_URL + '/register'),
+      {
+        method: 'POST',
+        body: JSON.stringify(credentials),
+        headers:
+          {'content-type': 'application/json'}
+      }).then((response) => response.json());
+  }
+
+  updateProfile (profile) {
+    return fetch((USER_API_URL + '/profile'),
+      {
+        method: 'PUT',
+        credentials : 'include',
+        body: JSON.stringify(profile),
+        headers:
+          {'content-type' : 'application/json'}
+      }).then(function (response) {
+        return response.json();
+        };
+  }
+
+  deleteProfile () {
+    return fetch((USER_API_URL + '/profile'),
+    {
+      method : 'DELETE',
+      credentials: 'include'
+    }
+  ).then(response => response.json());
+  }
+
+  findUserByUsername (username)
+  {
+    return fetch((USER_API_URL + '/username/' + username))
+      .then(function (response) {
+        return response.json();
+      });
+  }
 }
+
+
 
 
