@@ -16,7 +16,10 @@ const appRoutes: Routes = [
   {path: 'course/:courseId/section', component:    SectionsComponent},
   {path: 'enrollment', component:  EnrollmentComponent},
   {path: 'admin', component: AdminComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: '**', component: WhiteBoardComponent},
+  {path: '', redirectTo: 'home', pathMatch : 'full'},
+  {path: 'home' , component:  WhiteBoardComponent}
 ];
 
 
