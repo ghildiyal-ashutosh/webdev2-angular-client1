@@ -1,3 +1,8 @@
+
+
+###### Link to heroku app: https://webdev2-angular-ashu95.herokuapp.com/
+###### Server Repo: https://github.com/ghildiyal-ashutosh/webdev-summer2-2018-server-node-ashu95
+
 # Webdev2AngularClient1
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
