@@ -10,13 +10,13 @@ import {CourseServiceClient} from '../../services/course.service.client';
 export class CourseListComponent implements OnInit {
 
   courses = [];
-  selectedCourse = {id: -1, module: [] };
+  selectedCourse = {id: -1, module: [], title : '' };
 
   modules = [];
-  selectedModule = {id: -1, lessons: [] };
+  selectedModule = {id: -1, lessons: [] , title: '' };
 
   lessons = [];
-  selectedLesson = {widgets: []};
+  selectedLesson = {widgets: [], title: ''};
 
   widgets = [] ;
   selectedWidget = {};

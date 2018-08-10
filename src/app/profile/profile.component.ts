@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  currentUser = {};
+  currentUser = { username : ''};
   _id;
   username;
   firstName;
@@ -39,25 +39,25 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  unenroll(sectionId){
+  unenroll(sectionId) {
     this.sectionService.unenrollSection(sectionId)
       .then((status) => {
-        if (status._id == -1)
-
-        {this.sectionService
+        if (status._id === -1) {
+          this.sectionService
           .findSectionsForStudent()
-          .then((sections) => this.sections = sections)
+          .then((sections) => this.sections = sections);
         }
       }) ;
   }
 
 
   update () {
-    const profile = {_id: this._id,username: this.username,lastName: this.lastName, firsName: this.firstName,
+    const profile = {_id: this._id, username: this.username, lastName: this.lastName, firsName: this.firstName,
       email: this.email, contact: this.contact};
     this.userService.updateProfile(profile).then( user => {
-      if (user!== null)
+      if ( user !== null) {
         alert('Profile Updated');
+      }
     });
 
   }
@@ -79,9 +79,8 @@ export class ProfileComponent implements OnInit {
         else {
           this._id = -1;
         }
-      }).then (() =>
-    {
-      if (this._id !== -1){
+        }).then (() => {
+      if (this._id !== -1)  {
 
         this.sectionService
           .findSectionsForStudent()

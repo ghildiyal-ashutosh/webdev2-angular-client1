@@ -32,16 +32,14 @@ export class AdminComponent implements OnInit {
 
     this.sectionService
       .findSectionsForCourse(this.courseId)
-      .then(sections => this.sections = sections)
+      .then(sections => this.sections = sections);
   }
 
-  selectSection(section)
-  {
+  selectSection(section) {
     this.selectedSection = section;
   }
 
-  logout()
-  {
+  logout()  {
     this.loginStatus = true;
     this.userService.logOut()
       .then(() => this.router.navigate(['login'])

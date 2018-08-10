@@ -26,8 +26,7 @@ export class WhiteBoardComponent implements OnInit {
 
 
 
-              logout()
-              {
+              logout() {
                 this.viewStatus = true;
                 this.userService.logOut()
                   .then(() => this.router.navigate([''])

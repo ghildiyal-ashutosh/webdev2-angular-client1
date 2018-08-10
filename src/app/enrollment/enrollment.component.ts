@@ -49,10 +49,11 @@ export class EnrollmentComponent implements OnInit {
       .enrollSection(section._id)
       .then((response) => {
 
-        if (response !== null)
-        alert('Enrolled in' + '  ' + section.title);
+        if (response !== null) {
+          alert('Enrolled in' + '  ' + section.title);
+        }
         else
-          alert("You are not logged in");
+          alert('You are not logged in');
       });
   }
 
@@ -60,8 +61,7 @@ export class EnrollmentComponent implements OnInit {
 
     this.userService.currentUser()
       .then(user => {
-        if (user !== null)
-        {
+        if (user !== null) {
           this.viewStatus = false;
         }
       });
