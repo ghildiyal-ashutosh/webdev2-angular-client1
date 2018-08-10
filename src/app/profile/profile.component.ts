@@ -42,15 +42,11 @@ export class ProfileComponent implements OnInit {
   unenroll(sectionId) {
     this.sectionService.unenrollSection(sectionId)
       .then((status) => {
-        if (status._id === -1) {
-          this.sectionService
+        this.sectionService
           .findSectionsForStudent()
           .then((sections) => this.sections = sections);
-        }
-      }) ;
+      });
   }
-
-
   update () {
     const profile = {_id: this._id, username: this.username, lastName: this.lastName, firsName: this.firstName,
       email: this.email, contact: this.contact};
@@ -68,6 +64,7 @@ export class ProfileComponent implements OnInit {
     this.userService.currentUser()
       .then(user => {
         if (user !== null) {
+          this.adminStatus = false;
           this._id = user._id;
           this.username = user.username;
           this.firstName = user.firstName;
@@ -88,8 +85,6 @@ export class ProfileComponent implements OnInit {
 
         this.courseService.findAllCourses()
           .then(courses => this.courses = courses);
-
-        this.adminStatus = false;
       }
     });
     }}
