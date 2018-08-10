@@ -1,4 +1,5 @@
-const SECTION_API_URL = 'http://localhost:3000/api';
+// const SECTION_API_URL = 'http://localhost:3000/api';
+const SECTION_API_URL = 'https://webdev2-angular-ashu95.herokuapp.com/api';
 
 import {Injectable} from '@angular/core';
 
@@ -26,7 +27,7 @@ export class SectionServiceClient {
     });
   }
 
-  updateSection(section){
+  updateSection(section) {
     return fetch ((SECTION_API_URL + '/section/' + section.sectionId), {
       credentials: 'include',
       method : 'PUT',
@@ -39,7 +40,7 @@ export class SectionServiceClient {
   }
 
   findSectionsForCourse(courseId) {
-    return fetch((SECTION_API_URL + '/course/' + courseId + '/section'),{
+    return fetch((SECTION_API_URL + '/course/' + courseId + '/section'), {
       credentials: 'include'
     }).then(function (response) {
       return response.json();
@@ -69,7 +70,7 @@ export class SectionServiceClient {
     return fetch((SECTION_API_URL + '/section/unenroll/' + sectionId), {
       credentials: 'include',
       method: 'delete'
-    }).then(response => function (response) {
+    }).then(function (response) {
       return response.json();
     });
   }

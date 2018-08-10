@@ -1,4 +1,5 @@
-const USER_API_URL = 'http://localhost:3000/api';
+ // const USER_API_URL = 'http://localhost:3000/api';
+const USER_API_URL = 'https://webdev2-angular-ashu95.herokuapp.com/api';
 import {Injectable} from '@angular/core';
 
 @Injectable()
@@ -60,7 +61,7 @@ export class UserServiceClient {
           {'content-type' : 'application/json'}
       }).then(function (response) {
         return response.json();
-        };
+        });
   }
 
   deleteProfile () {
@@ -72,8 +73,7 @@ export class UserServiceClient {
   ).then(response => response.json());
   }
 
-  findUserByUsername (username)
-  {
+  findUserByUsername (username) {
     return fetch((USER_API_URL + '/username/' + username))
       .then(function (response) {
         return response.json();
