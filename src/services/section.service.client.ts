@@ -39,8 +39,9 @@ export class SectionServiceClient {
   }
 
   findSectionsForCourse(courseId) {
-    return fetch((SECTION_API_URL + '/course/' + courseId + '/section'))
-      .then(function (response) {
+    return fetch((SECTION_API_URL + '/course/' + courseId + '/section'),{
+      credentials: 'include'
+    }).then(function (response) {
       return response.json();
     });
   }
@@ -60,21 +61,25 @@ export class SectionServiceClient {
       credentials: 'include',
       method: 'PUT'
     }).then(function (response) {
-      return response;
+      return response.json();
     });
   }
 
   unenrollSection(sectionId) {
-    return fetch((SECTION_API_URL + '/section/unenroll' + sectionId), {
+    return fetch((SECTION_API_URL + '/section/unenroll/' + sectionId), {
       credentials: 'include',
       method: 'delete'
+    }).then(response => function (response) {
+      return response.json();
     });
   }
 
   findSectionsForStudent() {
-    return fetch (SECTION_API_URL + '/student/section', {
+    return fetch ((SECTION_API_URL + '/student/section'), {
       credentials: 'include'
-    }).then(response => response.json());
+    }).then(function (response) {
+      return response.json();
+    });
   }
 }
 
