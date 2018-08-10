@@ -7,10 +7,15 @@
     <button class="btn ">
       <a routerLink="/"> WhiteBoard</a>
     </button>
+    <button (click)= "logout()"
+      class="btn ">
+       Log-Out
+    </button>
+
   </span>
   <br/>
   <br/>
-  <div>
+  <div [hidden] = "loginStatus">
   <h1> Welcome Admin !!! </h1>
 
       <div class = "row">
