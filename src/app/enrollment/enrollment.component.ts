@@ -13,7 +13,8 @@ export class EnrollmentComponent implements OnInit {
   courses = [];
   selectedCourse = {id : ''};
   sections =  [] ;
-  selectedSection = {};
+  selectedSection = {remSeats: '', maxSeats: ''};
+  enrollStatus = false;
 
   sectionStatus = true;
   viewStatus = true;
@@ -45,16 +46,22 @@ export class EnrollmentComponent implements OnInit {
 
   enrollSection(section) {
     this.selectedSection = section;
-    this.sectionService
-      .enrollSection(section._id)
-      .then((response) => {
+    if (this.selectedSection.remSeats < this.selectedSection.maxSeats )  {
+      this.sectionService
+        .enrollSection(section._id)
+        .then((response) => {
 
-        if (response !== null) {
-          alert('Enrolled in' + '  ' + section.title);
-        }
-        else
-          alert('You are not logged in');
-      });
+          if (response !== null) {
+            alert('Enrolled in' + '  ' + section.title);
+          }
+          else
+            alert('You are not logged in');
+        });
+  }
+  else {
+      this.enrollStatus = true;
+      alert('Course Full cant enroll');
+    }
   }
 
   ngOnInit() {
