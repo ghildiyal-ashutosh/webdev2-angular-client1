@@ -14,7 +14,7 @@ export class EnrollmentComponent implements OnInit {
   selectedCourse = {id : ''};
   sections =  [] ;
   selectedSection = {remSeats: '', maxSeats: ''};
-  enrollStatus = false;
+
 
   sectionStatus = true;
   viewStatus = true;
@@ -59,7 +59,6 @@ export class EnrollmentComponent implements OnInit {
         });
   }
   else {
-      this.enrollStatus = true;
       alert('Course Full cant enroll');
     }
   }

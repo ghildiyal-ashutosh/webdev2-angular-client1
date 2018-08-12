@@ -33,7 +33,7 @@
           *ngFor = "let section of sections" class="list-group-item">
           {{section.title}}
           <span class="float-right">
-            <button  [hidden]= "viewStatus" [disabled]= "enrollStatus"
+            <button  [hidden]= "viewStatus"
               (click)="enrollSection(section)"
              class = "btn btn-primary "> Enroll</button>
   </span>

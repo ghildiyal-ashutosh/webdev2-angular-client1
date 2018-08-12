@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   contact;
   user = {};
   adminStatus = true;
+  enrollStatus = false;
 
   sections = [];
   courses = [];
@@ -39,13 +40,20 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  unenroll(sectionId) {
+  unenroll(section) {
+  const sectionId = section._id;
+
+  if (section.remSeats > 0) {
+
     this.sectionService.unenrollSection(sectionId)
       .then((status) => {
         this.sectionService
           .findSectionsForStudent()
           .then((sections) => this.sections = sections);
       });
+  }
+  else
+    alert('Not an enrolled course...Seats Filled = 0' );
   }
   update () {
     const profile = {_id: this._id, username: this.username, lastName: this.lastName, firsName: this.firstName,
