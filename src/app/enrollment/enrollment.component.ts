@@ -50,15 +50,11 @@ export class EnrollmentComponent implements OnInit {
 
       this.sectionService
         .enrollSection(section._id)
-        .then((response) => {
-
-          if (response !== null) {
-            alert('Enrolled in' + '  ' + section.title);
-            this.sectionService
+        .then(() => {
+          this.sectionService
               .findSectionsForCourse(this.selectedCourse.id)
               .then((sections) => this.sections = sections);
-          }
-        });
+          });
   }
   else {
       alert('Course Full cant enroll' +  ' ' + 'Available Seats' + ' ' +  section.remSeats );
