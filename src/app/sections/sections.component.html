@@ -14,7 +14,7 @@
          id = "sname"/>
       <br/>
 
-      <label for = "remSeats" > Seats Filled</label>
+      <label for = "remSeats" > Available Seats</label>
 
       <input
         [(ngModel)] = "remSeats"
@@ -49,7 +49,7 @@
     <li *ngFor ="let section of sections" class="list-group-item">
       <div class="row">
         <div class = "col-8">
-          Name : {{section.title}} &nbsp; Seats Filled : {{section.remSeats}} &nbsp; Maximum Seats : {{section.maxSeats}}
+          Name : {{section.title}} &nbsp; Available Seats: {{section.remSeats}} &nbsp; Maximum Seats : {{section.maxSeats}}
         </div>
         <div class = "col-4">
       <span class="float-right btn-group">

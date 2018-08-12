@@ -46,7 +46,8 @@ export class EnrollmentComponent implements OnInit {
 
   enrollSection(section) {
     this.selectedSection = section;
-    if (this.selectedSection.remSeats < this.selectedSection.maxSeats )  {
+    if (section.remSeats  > 0)  {
+
       this.sectionService
         .enrollSection(section._id)
         .then((response) => {
@@ -59,7 +60,7 @@ export class EnrollmentComponent implements OnInit {
         });
   }
   else {
-      alert('Course Full cant enroll');
+      alert('Course Full cant enroll' +  ' ' + 'Available Seats' + section.remSeats );
     }
   }
 

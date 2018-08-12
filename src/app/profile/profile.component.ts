@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
   unenroll(section) {
   const sectionId = section._id;
 
-  if (section.remSeats > 0) {
+  if (section.remSeats < section.maxSeats ) {
 
     this.sectionService.unenrollSection(sectionId)
       .then((status) => {
@@ -53,8 +53,9 @@ export class ProfileComponent implements OnInit {
       });
   }
   else
-    alert('Not an enrolled course...Seats Filled = 0' );
+    alert('Not an enrolled course...All Seats are availabe' + ' ' + + 'Available = ' + section.remSeats + ' ' + 'Maximum Seats' + section.maxSeats );
   }
+
   update () {
     const profile = {_id: this._id, username: this.username, lastName: this.lastName, firsName: this.firstName,
       email: this.email, contact: this.contact};
