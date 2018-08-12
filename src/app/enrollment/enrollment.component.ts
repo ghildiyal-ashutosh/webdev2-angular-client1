@@ -54,13 +54,14 @@ export class EnrollmentComponent implements OnInit {
 
           if (response !== null) {
             alert('Enrolled in' + '  ' + section.title);
+            this.sectionService
+              .findSectionsForCourse(this.selectedCourse.id)
+              .then((sections) => this.sections = sections);
           }
-          else
-            alert('You are not logged in');
         });
   }
   else {
-      alert('Course Full cant enroll' +  ' ' + 'Available Seats' + section.remSeats );
+      alert('Course Full cant enroll' +  ' ' + 'Available Seats' + ' ' +  section.remSeats );
     }
   }
 
