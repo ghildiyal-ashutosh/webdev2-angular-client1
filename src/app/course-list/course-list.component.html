@@ -1,5 +1,10 @@
 <div class="container-fluid"  ng-app="DemoApp" ng-controller="DemoController">
 
+  <div class = 'btn-grp float-right'>
+    <button class = 'btn btn-primary ' routerLink='/home'> Home</button>
+    <button class = 'btn btn-primary ' routerLink='/enrollment'> Course-Enrollment</button>
+  </div>
+
   <h1> Course-Information-Page</h1>
 
 
@@ -63,48 +68,50 @@
 
     <div [hidden] = "!widgetStatus">
       <h4> Content of {{selectedLesson.title}}</h4>
+
       <br/>
-      <div  (click)="selectWidget(widget)"
+      <div
         *ngFor = "let widget of selectedLesson.widgets">
 
 
         <div [ngSwitch] = "widget.widgetType">
 
 
-          <div *ngSwitchCase= "'Heading Widget'">
+          <div *ngSwitchCase= "'Heading Widget'" [hidden]="(!widget.visibility)" [hidden] = "contentView">
+
             <div [ngSwitch] = "widget.size">
               <h1 *ngSwitchCase = "'4'"> {{widget.text}} </h1>
               <h2 *ngSwitchCase = "'3'"> {{widget.text}} </h2>
               <h3 *ngSwitchCase = "'2'"> {{widget.text}} </h3>
               <h4 *ngSwitchCase = "'1'"> {{widget.text}} </h4>
             </div>
+
+
           </div>
 
 
-          <div *ngSwitchCase= "'Link Widget'">
+          <div *ngSwitchCase= "'Link Widget'" [hidden]="(!widget.visibility)" [hidden] = "contentView">
+
             <a href = "{{widget.link}}"> {{widget.text}}</a>
 
           </div>
 
           <br/>
 
-          <div *ngSwitchCase = "'List Widget'">
+          <div *ngSwitchCase = "'List Widget'" [hidden]="(!widget.visibility)" [hidden] = "contentView">
+
+
 
             <div [ngSwitch] = "widget.layout">
 
-
-
-
-               <ol *ngSwitchCase = "'ol'">
+              <ol *ngSwitchCase = "'ol'">
 
                 <li
                   *ngFor = "let item of widget.text.split('\n')">
                   {{item}}
                 </li>
+
                </ol>
-
-
-
               <ul
                 *ngSwitchCase = "'ul'">
 
@@ -112,6 +119,7 @@
                   *ngFor = "let item of widget.text.split('\n')">
                   {{item}} </li>
               </ul>
+
             </div>
 
 
@@ -119,36 +127,29 @@
           </div>
           <br/>
 
-          <div *ngSwitchCase= "'Paragraph Widget'">
+          <div *ngSwitchCase= "'Paragraph Widget'" [hidden]="(!widget.visibility)" [hidden] = "contentView">
+
             <p>  {{widget.text}}</p>
+
+
           </div>
           <br/>
 
 
-          <div *ngSwitchCase= "'Image Widget'">
+          <div *ngSwitchCase= "'Image Widget'" [hidden]="(!widget.visibility)" [hidden] = "contentView">
 
             <img src="{{widget.link}}"/>
 
+
           </div>
 
           <br/>
 
-
-
-
-
         </div>
-
-
-
       </div>
 
     </div>
   </div>
-
-
-
-
 </div>
 </div>
 

@@ -1,4 +1,6 @@
 <div class ="container-fluid" >
+
+
   <span class = "float-right">
     <div class ="btn-group">
       <button (click)= "logout()" class="btn">
@@ -10,6 +12,11 @@
        <button class="btn" [hidden]="adminStatus">
          <a routerLink = '/admin'>Admin</a>
        </button>
+
+      <button class="btn float-left" [hidden]="adminStatus">
+    <a routerLink =  '/faculty'> Faculty</a>
+  </button>
+
     </div>
   </span>
 

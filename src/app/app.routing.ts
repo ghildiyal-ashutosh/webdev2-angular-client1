@@ -7,6 +7,7 @@ import {EnrollmentComponent} from './enrollment/enrollment.component';
 import {AdminComponent} from './admin-homepage/admin.component';
 import {WhiteBoardComponent} from './white-board/white-board.component';
 import {CourseListComponent} from './course-list/course-list.component';
+import {FacultyHomepageComponent} from './faculty-homepage/faculty-homepage.component';
 
 const appRoutes: Routes = [
   {path: 'courses',  component:    CourseListComponent},
@@ -17,9 +18,10 @@ const appRoutes: Routes = [
   {path: 'enrollment', component:  EnrollmentComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegisterComponent},
-  {path: '**', component: WhiteBoardComponent},
   {path: '', redirectTo: 'home', pathMatch : 'full'},
-  {path: 'home' , component:  WhiteBoardComponent}
+  {path: 'home' , component:  WhiteBoardComponent},
+  {path: 'faculty', component: FacultyHomepageComponent},
+  {path: '**', component: WhiteBoardComponent}
 ];
 
 

@@ -13,5 +13,18 @@ export class CourseServiceClient {
     return fetch (COURSE_API_URL + '/findCourse/' + courseId)
       .then (response => response.json());
   }
+
+  updateVisibility(courseId, moduleId, lessonId, widgetList) {
+    return fetch((COURSE_API_URL + '/' +  courseId + '/module/' + moduleId + '/lesson/' + lessonId + '/widget'), {
+      method: 'POST',
+      body: JSON.stringify(widgetList),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(function (response) {
+      return response.json();
+    });
+  }
+
 }
 
