@@ -11,10 +11,10 @@ import {SectionServiceClient} from '../../services/section.service.client';
 export class CourseListComponent implements OnInit {
 
   courses = [];
-  selectedCourse = {id: -1, module: [], title : '' };
+  selectedCourse = {id: -1 , module: [], title : '' };
 
   modules = [];
-  selectedModule = {id: -1, lessons: [] , title: '' };
+  selectedModule = {id: '', lessons: [] , title: '' };
 
   lessons = [];
   selectedLesson = {widgets: [], title: ''};
@@ -25,9 +25,9 @@ export class CourseListComponent implements OnInit {
   lessonStatus = false;
   widgetStatus = false;
 
-  contentView =  true;
+  contentView =  false;
 
-  enrolledSections = [{courseId: -1 }]
+  enrolledSections = [{ id : -1,  section: {courseId: -1}}] ;
 
 
 
@@ -40,17 +40,17 @@ export class CourseListComponent implements OnInit {
     this.modules = this.selectedCourse.module;
     this.moduleStatus = true;
 
-    for (var i = 0 ; i < this.enrolledSections.length; i++) {
+    for ( let i = 0; i < this.enrolledSections.length; i++) {
 
-      const section = this.enrolledSections[i];
-
-      if (section.courseId === this.selectedCourse.id)
-        this.contentView = false;
-      else
+      if (this.selectedCourse.id === this.enrolledSections[i].section.courseId) {
         this.contentView = true;
+        break;
+      }
+      else
+        this.contentView = false;
+      }
 
-
-    }
+      console.log(this.contentView);
 
     }
 
