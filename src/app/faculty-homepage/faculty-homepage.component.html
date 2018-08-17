@@ -69,6 +69,8 @@
 
 
       <div [hidden] = "!widgetStatus">
+        <button class="btn btn-success float-right" (click)= "changeWidgetStatus(selectedLesson.widgets)"> Submit Changes</button>
+
         <h4> Content of {{selectedLesson.title}}</h4>
         <br/>
         <div  (click)="selectWidget(widget)"
@@ -146,7 +148,6 @@
           </div>
         </div>
 
-        <button class="btn btn-success float-right" (click)= "changeWidgetStatus(selectedLesson.widgets)"> Submit</button>
 
       </div>
     </div>
