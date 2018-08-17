@@ -76,8 +76,9 @@
 
         <div [ngSwitch] = "widget.widgetType">
 
+          <div *ngIf = "contentView === true || widget.visibility === true">
 
-          <div *ngSwitchCase= "'Heading Widget'" [hidden]="(!widget.visibility)" >
+          <div *ngSwitchCase= "'Heading Widget'">
 
             <div [ngSwitch] = "widget.size">
               <h1 *ngSwitchCase = "'4'"> {{widget.text}} </h1>
@@ -90,7 +91,7 @@
           </div>
 
 
-          <div *ngSwitchCase= "'Link Widget'" [hidden]="(!widget.visibility)">
+          <div *ngSwitchCase= "'Link Widget'"  >
 
             <a href = "{{widget.link}}"> {{widget.text}}</a>
 
@@ -98,7 +99,7 @@
 
           <br/>
 
-          <div *ngSwitchCase = "'List Widget'" [hidden]="(!widget.visibility)">
+          <div *ngSwitchCase = "'List Widget'" >
 
 
 
@@ -127,7 +128,7 @@
           </div>
           <br/>
 
-          <div *ngSwitchCase= "'Paragraph Widget'" [hidden]="(!widget.visibility)">
+          <div *ngSwitchCase= "'Paragraph Widget'" >
 
             <p>  {{widget.text}}</p>
 
@@ -136,7 +137,7 @@
           <br/>
 
 
-          <div *ngSwitchCase= "'Image Widget'" [hidden]="(!widget.visibility)">
+          <div *ngSwitchCase= "'Image Widget'" >
 
             <img src="{{widget.link}}"/>
 
@@ -146,6 +147,7 @@
           <br/>
 
         </div>
+      </div>
       </div>
 
     </div>
